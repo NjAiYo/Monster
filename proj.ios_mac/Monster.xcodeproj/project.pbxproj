@@ -98,6 +98,55 @@
 		F1297E7C1ADCB52F006028DA /* skeleton.json in Resources */ = {isa = PBXBuildFile; fileRef = F1297E471ADCB52F006028DA /* skeleton.json */; };
 		F1297E7D1ADCB52F006028DA /* smallzombie.json in Resources */ = {isa = PBXBuildFile; fileRef = F1297E481ADCB52F006028DA /* smallzombie.json */; };
 		F1297E7E1ADCB52F006028DA /* steak.png in Resources */ = {isa = PBXBuildFile; fileRef = F1297E491ADCB52F006028DA /* steak.png */; };
+		F1297EB11ADCD699006028DA /* bgm_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E801ADCD699006028DA /* bgm_1.mp3 */; };
+		F1297EB21ADCD699006028DA /* bgm_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E811ADCD699006028DA /* bgm_2.mp3 */; };
+		F1297EB31ADCD699006028DA /* bgm_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E821ADCD699006028DA /* bgm_3.mp3 */; };
+		F1297EB41ADCD699006028DA /* boss1_daduan1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E831ADCD699006028DA /* boss1_daduan1.mp3 */; };
+		F1297EB51ADCD699006028DA /* boss1_daduan2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E841ADCD699006028DA /* boss1_daduan2.mp3 */; };
+		F1297EB61ADCD699006028DA /* boss1_dead.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E851ADCD699006028DA /* boss1_dead.mp3 */; };
+		F1297EB71ADCD699006028DA /* boss1_fs.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E861ADCD699006028DA /* boss1_fs.mp3 */; };
+		F1297EB81ADCD699006028DA /* boss1_fssw.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E871ADCD699006028DA /* boss1_fssw.mp3 */; };
+		F1297EB91ADCD699006028DA /* boss1_sy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E881ADCD699006028DA /* boss1_sy.mp3 */; };
+		F1297EBA1ADCD699006028DA /* boss1_xx.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E891ADCD699006028DA /* boss1_xx.mp3 */; };
+		F1297EBB1ADCD699006028DA /* boss1_zhuazigj.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E8A1ADCD699006028DA /* boss1_zhuazigj.mp3 */; };
+		F1297EBC1ADCD699006028DA /* boss1_zhuazixl.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E8B1ADCD699006028DA /* boss1_zhuazixl.mp3 */; };
+		F1297EBD1ADCD699006028DA /* boss2_daduan.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E8C1ADCD699006028DA /* boss2_daduan.mp3 */; };
+		F1297EBE1ADCD699006028DA /* boss2_dead.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E8D1ADCD699006028DA /* boss2_dead.mp3 */; };
+		F1297EBF1ADCD699006028DA /* boss2_huo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E8E1ADCD699006028DA /* boss2_huo.mp3 */; };
+		F1297EC01ADCD699006028DA /* boss2_xuli.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E8F1ADCD699006028DA /* boss2_xuli.mp3 */; };
+		F1297EC11ADCD699006028DA /* boss2_zhuazigj.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E901ADCD699006028DA /* boss2_zhuazigj.mp3 */; };
+		F1297EC21ADCD699006028DA /* button.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E911ADCD699006028DA /* button.mp3 */; };
+		F1297EC31ADCD699006028DA /* cg_gd1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E921ADCD699006028DA /* cg_gd1.mp3 */; };
+		F1297EC41ADCD699006028DA /* cg_gd2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E931ADCD699006028DA /* cg_gd2.mp3 */; };
+		F1297EC51ADCD699006028DA /* d_bz.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E941ADCD699006028DA /* d_bz.mp3 */; };
+		F1297EC61ADCD699006028DA /* d_cg.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E951ADCD699006028DA /* d_cg.mp3 */; };
+		F1297EC71ADCD699006028DA /* d_hq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E961ADCD699006028DA /* d_hq.mp3 */; };
+		F1297EC81ADCD699006028DA /* d_hs.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E971ADCD699006028DA /* d_hs.mp3 */; };
+		F1297EC91ADCD699006028DA /* d_js.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E981ADCD699006028DA /* d_js.mp3 */; };
+		F1297ECA1ADCD699006028DA /* d_ng.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E991ADCD699006028DA /* d_ng.mp3 */; };
+		F1297ECB1ADCD699006028DA /* dao_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E9A1ADCD699006028DA /* dao_1.mp3 */; };
+		F1297ECC1ADCD699006028DA /* dao_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E9B1ADCD699006028DA /* dao_2.mp3 */; };
+		F1297ECD1ADCD699006028DA /* dj.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E9C1ADCD699006028DA /* dj.mp3 */; };
+		F1297ECE1ADCD699006028DA /* door0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E9D1ADCD699006028DA /* door0.mp3 */; };
+		F1297ECF1ADCD699006028DA /* door1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E9E1ADCD699006028DA /* door1.mp3 */; };
+		F1297ED01ADCD699006028DA /* door_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297E9F1ADCD699006028DA /* door_1.mp3 */; };
+		F1297ED11ADCD699006028DA /* door_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297EA01ADCD699006028DA /* door_2.mp3 */; };
+		F1297ED21ADCD699006028DA /* dybz.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297EA11ADCD699006028DA /* dybz.mp3 */; };
+		F1297ED31ADCD699006028DA /* dyempty.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297EA21ADCD699006028DA /* dyempty.mp3 */; };
+		F1297ED41ADCD699006028DA /* fireball.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297EA31ADCD699006028DA /* fireball.mp3 */; };
+		F1297ED51ADCD699006028DA /* game_fail.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297EA41ADCD699006028DA /* game_fail.mp3 */; };
+		F1297ED61ADCD699006028DA /* game_win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297EA51ADCD699006028DA /* game_win.mp3 */; };
+		F1297ED71ADCD699006028DA /* gold.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297EA61ADCD699006028DA /* gold.mp3 */; };
+		F1297ED81ADCD699006028DA /* hjt.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297EA71ADCD699006028DA /* hjt.mp3 */; };
+		F1297ED91ADCD699006028DA /* huoqiu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297EA81ADCD699006028DA /* huoqiu.mp3 */; };
+		F1297EDA1ADCD699006028DA /* item.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297EA91ADCD699006028DA /* item.mp3 */; };
+		F1297EDB1ADCD699006028DA /* jq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297EAA1ADCD699006028DA /* jq.mp3 */; };
+		F1297EDC1ADCD699006028DA /* reload.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297EAB1ADCD699006028DA /* reload.mp3 */; };
+		F1297EDD1ADCD699006028DA /* sdq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297EAC1ADCD699006028DA /* sdq.mp3 */; };
+		F1297EDE1ADCD699006028DA /* sq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297EAD1ADCD699006028DA /* sq.mp3 */; };
+		F1297EDF1ADCD699006028DA /* touch1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297EAE1ADCD699006028DA /* touch1.mp3 */; };
+		F1297EE01ADCD699006028DA /* uibgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297EAF1ADCD699006028DA /* uibgm.mp3 */; };
+		F1297EE11ADCD699006028DA /* wpupgrade.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1297EB01ADCD699006028DA /* wpupgrade.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -264,6 +313,55 @@
 		F1297E471ADCB52F006028DA /* skeleton.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = skeleton.json; sourceTree = "<group>"; };
 		F1297E481ADCB52F006028DA /* smallzombie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smallzombie.json; sourceTree = "<group>"; };
 		F1297E491ADCB52F006028DA /* steak.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = steak.png; sourceTree = "<group>"; };
+		F1297E801ADCD699006028DA /* bgm_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgm_1.mp3; sourceTree = "<group>"; };
+		F1297E811ADCD699006028DA /* bgm_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgm_2.mp3; sourceTree = "<group>"; };
+		F1297E821ADCD699006028DA /* bgm_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgm_3.mp3; sourceTree = "<group>"; };
+		F1297E831ADCD699006028DA /* boss1_daduan1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boss1_daduan1.mp3; sourceTree = "<group>"; };
+		F1297E841ADCD699006028DA /* boss1_daduan2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boss1_daduan2.mp3; sourceTree = "<group>"; };
+		F1297E851ADCD699006028DA /* boss1_dead.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boss1_dead.mp3; sourceTree = "<group>"; };
+		F1297E861ADCD699006028DA /* boss1_fs.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boss1_fs.mp3; sourceTree = "<group>"; };
+		F1297E871ADCD699006028DA /* boss1_fssw.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boss1_fssw.mp3; sourceTree = "<group>"; };
+		F1297E881ADCD699006028DA /* boss1_sy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boss1_sy.mp3; sourceTree = "<group>"; };
+		F1297E891ADCD699006028DA /* boss1_xx.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boss1_xx.mp3; sourceTree = "<group>"; };
+		F1297E8A1ADCD699006028DA /* boss1_zhuazigj.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boss1_zhuazigj.mp3; sourceTree = "<group>"; };
+		F1297E8B1ADCD699006028DA /* boss1_zhuazixl.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boss1_zhuazixl.mp3; sourceTree = "<group>"; };
+		F1297E8C1ADCD699006028DA /* boss2_daduan.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boss2_daduan.mp3; sourceTree = "<group>"; };
+		F1297E8D1ADCD699006028DA /* boss2_dead.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boss2_dead.mp3; sourceTree = "<group>"; };
+		F1297E8E1ADCD699006028DA /* boss2_huo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boss2_huo.mp3; sourceTree = "<group>"; };
+		F1297E8F1ADCD699006028DA /* boss2_xuli.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boss2_xuli.mp3; sourceTree = "<group>"; };
+		F1297E901ADCD699006028DA /* boss2_zhuazigj.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boss2_zhuazigj.mp3; sourceTree = "<group>"; };
+		F1297E911ADCD699006028DA /* button.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = button.mp3; sourceTree = "<group>"; };
+		F1297E921ADCD699006028DA /* cg_gd1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cg_gd1.mp3; sourceTree = "<group>"; };
+		F1297E931ADCD699006028DA /* cg_gd2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cg_gd2.mp3; sourceTree = "<group>"; };
+		F1297E941ADCD699006028DA /* d_bz.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = d_bz.mp3; sourceTree = "<group>"; };
+		F1297E951ADCD699006028DA /* d_cg.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = d_cg.mp3; sourceTree = "<group>"; };
+		F1297E961ADCD699006028DA /* d_hq.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = d_hq.mp3; sourceTree = "<group>"; };
+		F1297E971ADCD699006028DA /* d_hs.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = d_hs.mp3; sourceTree = "<group>"; };
+		F1297E981ADCD699006028DA /* d_js.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = d_js.mp3; sourceTree = "<group>"; };
+		F1297E991ADCD699006028DA /* d_ng.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = d_ng.mp3; sourceTree = "<group>"; };
+		F1297E9A1ADCD699006028DA /* dao_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dao_1.mp3; sourceTree = "<group>"; };
+		F1297E9B1ADCD699006028DA /* dao_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dao_2.mp3; sourceTree = "<group>"; };
+		F1297E9C1ADCD699006028DA /* dj.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dj.mp3; sourceTree = "<group>"; };
+		F1297E9D1ADCD699006028DA /* door0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = door0.mp3; sourceTree = "<group>"; };
+		F1297E9E1ADCD699006028DA /* door1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = door1.mp3; sourceTree = "<group>"; };
+		F1297E9F1ADCD699006028DA /* door_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = door_1.mp3; sourceTree = "<group>"; };
+		F1297EA01ADCD699006028DA /* door_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = door_2.mp3; sourceTree = "<group>"; };
+		F1297EA11ADCD699006028DA /* dybz.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dybz.mp3; sourceTree = "<group>"; };
+		F1297EA21ADCD699006028DA /* dyempty.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dyempty.mp3; sourceTree = "<group>"; };
+		F1297EA31ADCD699006028DA /* fireball.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fireball.mp3; sourceTree = "<group>"; };
+		F1297EA41ADCD699006028DA /* game_fail.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game_fail.mp3; sourceTree = "<group>"; };
+		F1297EA51ADCD699006028DA /* game_win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game_win.mp3; sourceTree = "<group>"; };
+		F1297EA61ADCD699006028DA /* gold.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gold.mp3; sourceTree = "<group>"; };
+		F1297EA71ADCD699006028DA /* hjt.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hjt.mp3; sourceTree = "<group>"; };
+		F1297EA81ADCD699006028DA /* huoqiu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = huoqiu.mp3; sourceTree = "<group>"; };
+		F1297EA91ADCD699006028DA /* item.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = item.mp3; sourceTree = "<group>"; };
+		F1297EAA1ADCD699006028DA /* jq.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jq.mp3; sourceTree = "<group>"; };
+		F1297EAB1ADCD699006028DA /* reload.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = reload.mp3; sourceTree = "<group>"; };
+		F1297EAC1ADCD699006028DA /* sdq.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sdq.mp3; sourceTree = "<group>"; };
+		F1297EAD1ADCD699006028DA /* sq.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sq.mp3; sourceTree = "<group>"; };
+		F1297EAE1ADCD699006028DA /* touch1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = touch1.mp3; sourceTree = "<group>"; };
+		F1297EAF1ADCD699006028DA /* uibgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = uibgm.mp3; sourceTree = "<group>"; };
+		F1297EB01ADCD699006028DA /* wpupgrade.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wpupgrade.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -381,6 +479,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F1297E7F1ADCD699006028DA /* sounds */,
 				F1297E131ADCB52F006028DA /* PIC_XX.png */,
 				F1297E461ADCB52F006028DA /* spine */,
 				F1297E491ADCB52F006028DA /* steak.png */,
@@ -588,6 +687,62 @@
 			path = spine;
 			sourceTree = "<group>";
 		};
+		F1297E7F1ADCD699006028DA /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				F1297E801ADCD699006028DA /* bgm_1.mp3 */,
+				F1297E811ADCD699006028DA /* bgm_2.mp3 */,
+				F1297E821ADCD699006028DA /* bgm_3.mp3 */,
+				F1297E831ADCD699006028DA /* boss1_daduan1.mp3 */,
+				F1297E841ADCD699006028DA /* boss1_daduan2.mp3 */,
+				F1297E851ADCD699006028DA /* boss1_dead.mp3 */,
+				F1297E861ADCD699006028DA /* boss1_fs.mp3 */,
+				F1297E871ADCD699006028DA /* boss1_fssw.mp3 */,
+				F1297E881ADCD699006028DA /* boss1_sy.mp3 */,
+				F1297E891ADCD699006028DA /* boss1_xx.mp3 */,
+				F1297E8A1ADCD699006028DA /* boss1_zhuazigj.mp3 */,
+				F1297E8B1ADCD699006028DA /* boss1_zhuazixl.mp3 */,
+				F1297E8C1ADCD699006028DA /* boss2_daduan.mp3 */,
+				F1297E8D1ADCD699006028DA /* boss2_dead.mp3 */,
+				F1297E8E1ADCD699006028DA /* boss2_huo.mp3 */,
+				F1297E8F1ADCD699006028DA /* boss2_xuli.mp3 */,
+				F1297E901ADCD699006028DA /* boss2_zhuazigj.mp3 */,
+				F1297E911ADCD699006028DA /* button.mp3 */,
+				F1297E921ADCD699006028DA /* cg_gd1.mp3 */,
+				F1297E931ADCD699006028DA /* cg_gd2.mp3 */,
+				F1297E941ADCD699006028DA /* d_bz.mp3 */,
+				F1297E951ADCD699006028DA /* d_cg.mp3 */,
+				F1297E961ADCD699006028DA /* d_hq.mp3 */,
+				F1297E971ADCD699006028DA /* d_hs.mp3 */,
+				F1297E981ADCD699006028DA /* d_js.mp3 */,
+				F1297E991ADCD699006028DA /* d_ng.mp3 */,
+				F1297E9A1ADCD699006028DA /* dao_1.mp3 */,
+				F1297E9B1ADCD699006028DA /* dao_2.mp3 */,
+				F1297E9C1ADCD699006028DA /* dj.mp3 */,
+				F1297E9D1ADCD699006028DA /* door0.mp3 */,
+				F1297E9E1ADCD699006028DA /* door1.mp3 */,
+				F1297E9F1ADCD699006028DA /* door_1.mp3 */,
+				F1297EA01ADCD699006028DA /* door_2.mp3 */,
+				F1297EA11ADCD699006028DA /* dybz.mp3 */,
+				F1297EA21ADCD699006028DA /* dyempty.mp3 */,
+				F1297EA31ADCD699006028DA /* fireball.mp3 */,
+				F1297EA41ADCD699006028DA /* game_fail.mp3 */,
+				F1297EA51ADCD699006028DA /* game_win.mp3 */,
+				F1297EA61ADCD699006028DA /* gold.mp3 */,
+				F1297EA71ADCD699006028DA /* hjt.mp3 */,
+				F1297EA81ADCD699006028DA /* huoqiu.mp3 */,
+				F1297EA91ADCD699006028DA /* item.mp3 */,
+				F1297EAA1ADCD699006028DA /* jq.mp3 */,
+				F1297EAB1ADCD699006028DA /* reload.mp3 */,
+				F1297EAC1ADCD699006028DA /* sdq.mp3 */,
+				F1297EAD1ADCD699006028DA /* sq.mp3 */,
+				F1297EAE1ADCD699006028DA /* touch1.mp3 */,
+				F1297EAF1ADCD699006028DA /* uibgm.mp3 */,
+				F1297EB01ADCD699006028DA /* wpupgrade.mp3 */,
+			);
+			path = sounds;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -688,31 +843,80 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1297EDB1ADCD699006028DA /* jq.mp3 in Resources */,
 				F1297E7C1ADCB52F006028DA /* skeleton.json in Resources */,
+				F1297EDD1ADCD699006028DA /* sdq.mp3 in Resources */,
+				F1297ED31ADCD699006028DA /* dyempty.mp3 in Resources */,
+				F1297EB61ADCD699006028DA /* boss1_dead.mp3 in Resources */,
+				F1297ED81ADCD699006028DA /* hjt.mp3 in Resources */,
+				F1297ECA1ADCD699006028DA /* d_ng.mp3 in Resources */,
+				F1297EC01ADCD699006028DA /* boss2_xuli.mp3 in Resources */,
+				F1297EB81ADCD699006028DA /* boss1_fssw.mp3 in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
+				F1297ED41ADCD699006028DA /* fireball.mp3 in Resources */,
+				F1297EB91ADCD699006028DA /* boss1_sy.mp3 in Resources */,
+				F1297ECF1ADCD699006028DA /* door1.mp3 in Resources */,
+				F1297EE11ADCD699006028DA /* wpupgrade.mp3 in Resources */,
+				F1297EC31ADCD699006028DA /* cg_gd1.mp3 in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
+				F1297EB51ADCD699006028DA /* boss1_daduan2.mp3 in Resources */,
+				F1297ED21ADCD699006028DA /* dybz.mp3 in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
+				F1297EDF1ADCD699006028DA /* touch1.mp3 in Resources */,
+				F1297EDC1ADCD699006028DA /* reload.mp3 in Resources */,
+				F1297ED61ADCD699006028DA /* game_win.mp3 in Resources */,
+				F1297EC41ADCD699006028DA /* cg_gd2.mp3 in Resources */,
+				F1297EC11ADCD699006028DA /* boss2_zhuazigj.mp3 in Resources */,
+				F1297EDE1ADCD699006028DA /* sq.mp3 in Resources */,
+				F1297EB71ADCD699006028DA /* boss1_fs.mp3 in Resources */,
+				F1297ECC1ADCD699006028DA /* dao_2.mp3 in Resources */,
+				F1297ED01ADCD699006028DA /* door_1.mp3 in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
+				F1297ECB1ADCD699006028DA /* dao_1.mp3 in Resources */,
+				F1297EC91ADCD699006028DA /* d_js.mp3 in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
+				F1297EB11ADCD699006028DA /* bgm_1.mp3 in Resources */,
 				F1297E4A1ADCB52F006028DA /* PIC_XX.png in Resources */,
 				F1297E101ADCB4EF006028DA /* resHD in Resources */,
+				F1297ED11ADCD699006028DA /* door_2.mp3 in Resources */,
+				F1297EBA1ADCD699006028DA /* boss1_xx.mp3 in Resources */,
+				F1297EBE1ADCD699006028DA /* boss2_dead.mp3 in Resources */,
+				F1297ED51ADCD699006028DA /* game_fail.mp3 in Resources */,
+				F1297EC51ADCD699006028DA /* d_bz.mp3 in Resources */,
+				F1297EBF1ADCD699006028DA /* boss2_huo.mp3 in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
+				F1297EC81ADCD699006028DA /* d_hs.mp3 in Resources */,
 				F1297E121ADCB4EF006028DA /* resIpadHD in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
+				F1297EB31ADCD699006028DA /* bgm_3.mp3 in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
+				F1297ECE1ADCD699006028DA /* door0.mp3 in Resources */,
+				F1297ECD1ADCD699006028DA /* dj.mp3 in Resources */,
 				F1297E111ADCB4EF006028DA /* resIpad in Resources */,
+				F1297ED91ADCD699006028DA /* huoqiu.mp3 in Resources */,
+				F1297ED71ADCD699006028DA /* gold.mp3 in Resources */,
 				F1297E7E1ADCB52F006028DA /* steak.png in Resources */,
+				F1297EE01ADCD699006028DA /* uibgm.mp3 in Resources */,
+				F1297EB21ADCD699006028DA /* bgm_2.mp3 in Resources */,
+				F1297EBB1ADCD699006028DA /* boss1_zhuazigj.mp3 in Resources */,
 				F1297E7D1ADCB52F006028DA /* smallzombie.json in Resources */,
+				F1297EC61ADCD699006028DA /* d_cg.mp3 in Resources */,
+				F1297EBD1ADCD699006028DA /* boss2_daduan.mp3 in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
+				F1297EB41ADCD699006028DA /* boss1_daduan1.mp3 in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
+				F1297EC21ADCD699006028DA /* button.mp3 in Resources */,
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,
+				F1297EC71ADCD699006028DA /* d_hq.mp3 in Resources */,
+				F1297EDA1ADCD699006028DA /* item.mp3 in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
+				F1297EBC1ADCD699006028DA /* boss1_zhuazixl.mp3 in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
