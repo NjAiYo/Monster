@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
+#include "LoadScene.h"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 
@@ -37,7 +38,44 @@ bool AppDelegate::applicationDidFinishLaunching() {
         glview = GLViewImpl::create("My Game");
         director->setOpenGLView(glview);
     }
-
+    // Set the design resolution
+    Size winSize = director->getWinSize();
+    float ratio = winSize.width/winSize.height;
+    scaleFactory = 1;
+    if (ratio > 1.73) {//1.78
+        if(winSize.width > 1600){
+            glview->setDesignResolutionSize(designResolutionSizeA_HD.width, designResolutionSizeA_HD.height, ResolutionPolicy::EXACT_FIT);
+            scaleFactory = 1.0;
+            FileUtils::getInstance()->addSearchPath("resHD");
+        }else{
+            glview->setDesignResolutionSize(designResolutionSizeA.width, designResolutionSizeA.height, ResolutionPolicy::EXACT_FIT);
+            scaleFactory = 1280.0/2208.0;
+            FileUtils::getInstance()->addSearchPath("res");
+        }
+    }else if (ratio > 1.63){//1.67
+        glview->setDesignResolutionSize(designResolutionSizeB.width, designResolutionSizeB.height, ResolutionPolicy::EXACT_FIT);
+        scaleFactory = 1280.0/2208.0;
+        FileUtils::getInstance()->addSearchPath("res");
+    }else if (ratio > 1.55){
+        glview->setDesignResolutionSize(designResolutionSizeC.width, designResolutionSizeC.height, ResolutionPolicy::EXACT_FIT);
+        scaleFactory = 1280.0/2208.0;
+        FileUtils::getInstance()->addSearchPath("res");
+    }else if (ratio > 1.45){
+        glview->setDesignResolutionSize(designResolutionSizeD.width, designResolutionSizeD.height, ResolutionPolicy::EXACT_FIT);
+        scaleFactory = 1280.0/2208.0;
+        FileUtils::getInstance()->addSearchPath("res");
+    }else{//ipad
+        if(winSize.width > 1024){
+            glview->setDesignResolutionSize(designResolutionSizeE_HD.width, designResolutionSizeE_HD.height, ResolutionPolicy::EXACT_FIT);
+            scaleFactory = 2048.0/2208.0;
+            FileUtils::getInstance()->addSearchPath("resIpadHD");
+        }else{
+            glview->setDesignResolutionSize(designResolutionSizeE.width, designResolutionSizeE.height, ResolutionPolicy::EXACT_FIT);
+            scaleFactory = 1024.0/2208.0;
+            FileUtils::getInstance()->addSearchPath("resIpad");
+        }
+    }
+    //glview->setContentScaleFactor(scaleFactory);
     // turn on display FPS
     director->setDisplayStats(true);
 
@@ -47,7 +85,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
+    auto scene = LoadScene::createScene();
 
     // run
     director->runWithScene(scene);
