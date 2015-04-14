@@ -10,7 +10,7 @@
 #define __BGT__GameManager__
 
 #include "cocos2d.h"
-#include "sqlite3.h"
+//#include "sqlite3.h"
 #include "UserData.h"
 
 USING_NS_CC;
@@ -18,11 +18,11 @@ USING_NS_CC;
 class GameManager : public cocos2d::Ref
 {
 private:
-    sqlite3 *pDB;
+//    sqlite3 *pDB;
     
     char * errMsg;
     
-    std::string sqlstr;
+//    std::string sqlstr;
     int result;
     
     UserData *userData;
