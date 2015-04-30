@@ -12,9 +12,11 @@
 
 void DieState::enter(Character* agent)
 {
+    log("DieState");
+    deadTime = 0;
     //agent->playAnimation(0,"die", true);
     spTrackEntry* entry = agent->getSkeletonNode()->setAnimation(0, "die", false);
-    agent->getSkeletonNode()->setTrackCompleteListener(entry, [] (int trackIndex,int loopCount) {
+    agent->getSkeletonNode()->setTrackCompleteListener(entry, [=] (int trackIndex,int loopCount) {
         //log("attack complete!");
         //agent->move();
     });
@@ -23,7 +25,11 @@ void DieState::enter(Character* agent)
 
 void DieState::execute(Character* agent,float dt)
 {
-    
+    deadTime += dt;
+    if (deadTime >= 1.0) {
+        agent->setVisible(false);
+        //agent->runAction(FadeOut::create(1.0));
+    }
 }
 
 void DieState::exit(Character* agent)

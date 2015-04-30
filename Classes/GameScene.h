@@ -26,14 +26,13 @@ private:
     
     Vector<Node*> pausedNodes;
     
-
     
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
-    static cocos2d::Scene* createScene();
+    static cocos2d::Scene* createSceneWithLevel(unsigned int level);
     
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
-    virtual bool init();
+    virtual bool initWithLevel(unsigned int level);
     
     GameState getState();
     
@@ -47,7 +46,7 @@ public:
     void setLevel(unsigned value);
     void pauseGame();
     void resumeGame();
-    void gameEnd();
+    void gameEnd(bool isWin);
     
     void update(float dt);
     

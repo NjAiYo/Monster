@@ -47,7 +47,7 @@ USING_NS_CC;
 
 #define fieldWidth 1000
 
-#define fieldHeight 400
+#define fieldHeight 520
 
 #define lifeBarWidthOfUI 180
 
@@ -55,7 +55,25 @@ USING_NS_CC;
 
 #define expBarWidthOfUI 180
 
+//第一波出完后（waveGapTime秒后出怪，如果最后一个怪被打死还没出，马上出）
+#define waveGapTime 15
 
+
+typedef enum {
+    TROOP_TIME_MODE_FIXED = 0,
+    TROOP_TIME_MODE_RANDOM = 1,
+    TROOP_TIME_MODE_LINEAR = 2,
+} TroopTimeMode;
+
+typedef enum {
+    TROOP_MONSTER_TYPE_MODE_FIXED = 0,
+    TROOP_MONSTER_TYPE_MODE_RANDOM = 1,
+} TroopMonsterMode;
+
+typedef enum {
+    TROOP_POSITION_MODE_FIXED = 0,
+    TROOP_POSITION_MODE_RANDOM = 1,
+} TroopPositionMode;
 
 typedef enum {
     Msg_WallDamaged,
@@ -69,20 +87,10 @@ typedef enum {
 } MessageType;
 
 typedef enum {
-    CharacterTypeSmallZombie,
-    kBowSoldier,
-    kSwordSoldier,
-    kSpearSoldier,
-    kShieldBladeSoldier,
-    kArmorSwordSoldier,
-    kArmorSpearSoldier,
-    kLongbowSoldier,
-    kCrossbowSoldier,
-    kGunSoldier,
-    kBombSoldier,
-    kCannonSoldier,
-    kMagian,
-    kDragon,
+    CharacterTypeSmallZombie=0,//小僵尸
+    CharacterTypeSmallGhost=1,//小幽灵
+    CharacterTypeSmallWuTouYong=2,//无头俑
+    CharacterTypeBigZombie=2,//大僵尸
 } CharacterType;
 
 typedef enum {

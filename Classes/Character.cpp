@@ -17,6 +17,8 @@
 Character::Character()
 :skeletonNode(NULL)
 ,floor(0)
+,currentTimeScale(1)
+,monsterData(NULL)
 {
 
 }
@@ -36,6 +38,9 @@ Character::~Character()
     moveState->release();
     lieDownState->release();
     flowState->release();
+    if (monsterData) {
+        monsterData->release();
+    }
 }
 
 bool Character::initWithWorldAndType(BGTWorld *w,CharacterType t)
@@ -43,6 +48,21 @@ bool Character::initWithWorldAndType(BGTWorld *w,CharacterType t)
     if (!GameEntity::initWithWorld(w)) {
         return false;
     }
+    
+    lifeBar = Sprite::createWithSpriteFrameName("lifeBarFrame.png");
+    lifeBar->setPosition(0,0);
+    addChild(lifeBar);
+    lifeBar->setVisible(false);
+    
+    progressBar = ProgressTimer::create(Sprite::createWithSpriteFrameName("lifeBar.png"));
+    
+    progressBar->setType(ProgressTimer::Type::BAR);
+    progressBar->setMidpoint(Vec2(0,1));
+    progressBar->setBarChangeRate(Vec2(1, 0));
+    progressBar->setPercentage(100);
+    progressBar->setPosition(lifeBar->getContentSize().width/2,lifeBar->getContentSize().height/2);
+    lifeBar->addChild(progressBar);
+    
 
     dispatcher = MessageDispatcher::getInstance();
     //set up state machine
@@ -64,6 +84,12 @@ bool Character::initWithWorldAndType(BGTWorld *w,CharacterType t)
     wall = world->getWall();
     setType(t);
     reset();
+    
+//    hitRectNode = DrawNode::create();
+//    addChild(hitRectNode,100000);
+    
+    
+
     return true;
 }
 
@@ -90,6 +116,7 @@ void Character::standup()
 void Character::move()
 {
     m_pStateMachine->changeState(moveState);
+
 }
 
 //for animation
@@ -103,11 +130,28 @@ void Character::move()
 
 Rect Character::getRect()
 {
-    if (m_pStateMachine->isInState(*lieDownState)||m_pStateMachine->isInState(*flowState)||m_pStateMachine->isInState(*injureState)||m_pStateMachine->isInState(*dieState)) {
-        return Rect(getPositionX(), getPositionY()-soldierWidth/2, soldierHeight, soldierWidth);
-    }else{
-        return Rect(getPositionX()-soldierWidth/2, getPositionY(), soldierWidth, soldierHeight);
-    }
+    //spAttachment *boundingBox = skeletonNode->getAttachment("bodyBound", "bodyBound");
+    Rect rect = skeletonNode->getBoundingBox();
+    return Rect(getPositionX()+rect.origin.x, getPositionY()+rect.origin.y, rect.size.width, rect.size.height);
+//    //hitRectNode->drawRect(rect.origin, Vec2(rect.origin.x+rect.size.width,rect.origin.y+rect.size.height), Color4F(0, 1, 0, 1));
+//    //log("getRect");
+//    if (m_pStateMachine->isInState(*lieDownState)||m_pStateMachine->isInState(*flowState)||m_pStateMachine->isInState(*injureState)||m_pStateMachine->isInState(*dieState)) {
+//        float soldierWidth = monsterData->hitRect.size.width;
+//        float soldierHeight = monsterData->hitRect.size.height;
+//        return Rect(getPositionX(), getPositionY()-soldierWidth/2, soldierHeight, soldierWidth);
+////        Rect rect = Rect(getPositionX()+monsterData->hitRect.origin.x, getPositionY()+monsterData->hitRect.origin.y, getPositionY()+monsterData->hitRect.size.width, getPositionY()+monsterData->hitRect.size.height);
+//
+////        hitRectNode->drawRect(monsterData->hitRect.origin, Vec2(monsterData->hitRect.origin.x+monsterData->hitRect.size.width,monsterData->hitRect.origin.y+monsterData->hitRect.size.height), Color4F(0, 1, 0, 1));
+////
+////        return rect;
+//    }else{
+//        //return Rect(getPositionX()-soldierWidth/2, getPositionY(), soldierWidth, soldierHeight);
+//        Rect rect = Rect(getPositionX()+monsterData->hitRect.origin.x, getPositionY()+monsterData->hitRect.origin.y, getPositionY()+monsterData->hitRect.size.width, getPositionY()+monsterData->hitRect.size.height);
+//
+//        //hitRectNode->drawRect(monsterData->hitRect.origin, Vec2(monsterData->hitRect.origin.x+monsterData->hitRect.size.width,monsterData->hitRect.origin.y+monsterData->hitRect.size.height), Color4F(0, 1, 0, 1));
+//
+//        return rect;
+//    }
 }
 
 SkeletonAnimation* Character::getSkeletonNode()
@@ -117,11 +161,10 @@ SkeletonAnimation* Character::getSkeletonNode()
 
 void Character::reset()
 {
-    moveSpeed = 40;
-    attackSpeed = 1;
-
     setDirection(CharacterDirectionLeft);
-    life = totalLife = 100;
+    life = monsterData->life;
+    progressBar->setPercentage(100 *(life/(float)monsterData->life));
+    lifeBar->setVisible(false);
     m_pStateMachine->setCurrentState(standState);
     m_pStateMachine->changeState(standState);
 }
@@ -206,6 +249,11 @@ void Character::dizzy()
     m_pStateMachine->changeState(dizzyState);
 }
 
+void Character::die(){
+    world->monsterDied(this);
+    m_pStateMachine->changeState(dieState);
+}
+
 void Character::liedown()
 {
     m_pStateMachine->changeState(lieDownState);
@@ -237,7 +285,29 @@ void Character::takeDamage(float value)
         return;
     }
     life -= value;
+    if (life <= 0) {
+        life = 0;
+        lifeBar->setVisible(false);
+    }else{
+        lifeBar->setVisible(true);
+    }
+    progressBar->setPercentage(100 *(life/(float)monsterData->life));
+//    if(life <= 0){
+//        m_pStateMachine->changeState(dieState);
+//    }
+    
     //CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("dao_1.mp3");
+}
+
+void Character::pauseAnimation()
+{
+    currentTimeScale = skeletonNode->getTimeScale();
+    skeletonNode->setTimeScale(0);
+}
+
+void Character::resumeAnimation()
+{
+    skeletonNode->setTimeScale(currentTimeScale);
 }
 
 void Character::setDirection(CharacterDirection d)
@@ -278,7 +348,6 @@ State<Character>* Character::getState()
 
 void Character::setType(CharacterType d)
 {
-    type = d;
     
     AppDelegate *app = (AppDelegate*)Application::getInstance();
     float scaleFactory = app->scaleFactory;
@@ -287,38 +356,47 @@ void Character::setType(CharacterType d)
         skeletonNode->removeFromParent();
         skeletonNode = NULL;
     }
-    switch (type) {
-        case CharacterTypeSmallZombie:{
-            spAtlas* atlas = spAtlas_createFromFile( "smallzombie.atlas", 0);
-            skeletonNode = SkeletonAnimation::createWithFile("smallzombie.json", atlas, 0.45f * scaleFactory);
-            attackRange = 250.0f * scaleFactory;
-            moveSpeed = 120.0f * scaleFactory;
-            soldierWidth = 457.0f * 0.45f * scaleFactory;
-            soldierHeight = 748.0f * 0.45f * scaleFactory;
-            
-//            //所有动画播放一遍，不然会有卡顿现象
-//            skeletonNode->setAnimation(0, "Injured", false);
-//            skeletonNode->setAnimation(0, "attack", false);
-//            skeletonNode->setAnimation(0, "bigattack", false);
-//            skeletonNode->setAnimation(0, "die", false);
-//            skeletonNode->setAnimation(0, "dizzy", false);
-//            skeletonNode->setAnimation(0, "layback", false);
-//            skeletonNode->setAnimation(0, "stand", false);
-//            skeletonNode->setAnimation(0, "stiff", false);
-//            skeletonNode->setAnimation(0, "up", false);
-//            skeletonNode->setAnimation(0, "walk", false);
-        }
-            break;
-            
-        default:
-            break;
+    if (monsterData) {
+        monsterData->release();
     }
+    monsterData = WaveManager::getInstance()->getMonsterDataByType(d);
+//#if COCOS2D_DEBUG > 0
+    char msg[256] = {0};
+    sprintf(msg, "Invalid monster type: %d", d);
+    CCASSERT(monsterData != NULL, msg);
+//#endif
+    char name[256] = {0};
+    sprintf(name, "monster%d.atlas", d);
+    spAtlas* atlas = spAtlas_createFromFile(name, 0);
+    char name1[256] = {0};
+    sprintf(name1, "monster%d.json", d);
+    skeletonNode = SkeletonAnimation::createWithFile("skeleton.json", atlas, 0.45f * scaleFactory);
+    skeletonNode->setPosition(0, 0);
+    addChild(skeletonNode);
+
+    Rect rect = skeletonNode->getBoundingBox();
+    lifeBar->setPositionY(monsterData->hitRect.size.height+70);
+    
+    
+    //skeletonNode->setDebugBonesEnabled(true);
+//    switch (d) {
+//        case CharacterTypeSmallZombie:{
+//
+////            attackRange = 250.0f * scaleFactory;
+////            moveSpeed = 120.0f * scaleFactory;
+////            soldierWidth = 457.0f * 0.45f * scaleFactory;
+////            soldierHeight = 748.0f * 0.45f * scaleFactory;
+//        }
+//            break;
+//            
+//        default:
+//            break;
+//    }
     
     //skeletonNode->setAnimation(0, "walk", true);
     //        spine::SkeletonAnimation *skeletonNode = SkeletonAnimation::createWithFile("hero.json", "hero.atlas", 0.6f);
     //        skeletonNode->setAnimation(0, "daiji", true);
-    skeletonNode->setPosition(0, 0);
-    addChild(skeletonNode);
+
     //skeletonNode->setAnimation(0, "stand", true);
     
     
@@ -393,17 +471,7 @@ void Character::animationStateEvent (int trackIndex, spEventType type, spEvent* 
 
 CharacterType Character::getType()
 {
-    return type;
-}
-
-void Character::setTotalLife(float d)
-{
-    totalLife = d;
-}
-
-float Character::getTotalLife()
-{
-    return totalLife;
+    return (CharacterType)monsterData->type;
 }
 
 void Character::setLife(float d)
@@ -416,24 +484,34 @@ float Character::getLife()
     return life;
 }
 
-void Character::setSoldierWidth(float d)
+//void Character::setTotalLife(float d)
+//{
+//    totalLife = d;
+//}
+
+float Character::getTotalLife()
 {
-    soldierWidth = d;
+    return monsterData->life;
 }
+
+//void Character::setSoldierWidth(float d)
+//{
+//    soldierWidth = d;
+//}
 
 float Character::getSoldierWidth()
 {
-    return soldierWidth;
+    return monsterData->hitRect.size.width;
 }
 
-void Character::setSoldierHeight(float d)
-{
-    soldierHeight = d;
-}
+//void Character::setSoldierHeight(float d)
+//{
+//    soldierHeight = d;
+//}
 
 float Character::getSoldierHeight()
 {
-    return soldierHeight;
+    return monsterData->hitRect.size.height;;
 }
 
 void Character::setHeightFromFloor(float d)
@@ -446,34 +524,34 @@ float Character::getHeightFromFloor()
     return heightFromFloor;
 }
 
-void Character::setMoveSpeed(float d)
-{
-    moveSpeed = d;
-}
+//void Character::setMoveSpeed(float d)
+//{
+//    moveSpeed = d;
+//}
 
 float Character::getMoveSpeed()
 {
-    return moveSpeed;
+    return monsterData->moveSpeed;
 }
 
-void Character::setAttackSpeed(float d)
-{
-    attackSpeed = d;
-}
+//void Character::setAttackSpeed(float d)
+//{
+//    attackSpeed = d;
+//}
 
 float Character::getAttackSpeed()
 {
-    return attackSpeed;
+    return monsterData->attackSpeed;
 }
 
-void Character::setDamage(float d)
-{
-    damage = d;
-}
+//void Character::setDamage(float d)
+//{
+//    damage = d;
+//}
 
 float Character::getDamage()
 {
-    return damage;
+    return (float)monsterData->damage;
 }
 
 void Character::setIsRemoteSoldier(bool d)
@@ -486,13 +564,17 @@ bool Character::getIsRemoteSoldier()
     return isRemoteSoldier;
 }
 
-void Character::setAttackRange(float d)
-{
-    attackRange = d;
-}
+//void Character::setAttackRange(float d)
+//{
+//    attackRange = d;
+//}
 
 float Character::getAttackRange()
 {
-    return attackRange;
+    return monsterData->attackRange;
 }
 
+MonsterData* Character::getMonsterData()
+{
+    return monsterData;
+}

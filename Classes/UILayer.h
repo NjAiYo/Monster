@@ -10,6 +10,7 @@
 #define __BGT__UILayer__
 
 #include "cocos2d.h"
+#include "GameManager.h"
 
 USING_NS_CC;
 
@@ -21,6 +22,28 @@ private:
     GameScene *gameScene;
     Sprite *knifeIcon;
     Sprite *gunIcon;
+    Layer *hudLayer;
+    LayerColor *winLayer;
+    LayerColor *failedLayer;
+    LayerColor *pausedLayer;
+    Label *scorelabel;
+    Label *playerLevelLabel;
+    Label *coinLabel;
+    
+    GameManager *gameManager;
+    Player *player;
+    Sprite *enegyBar;
+    ProgressTimer *enegyProgressBar;
+    
+    Sprite *lifeBar;
+    ProgressTimer *lifeProgressBar;
+    
+    void restartCallback(Ref* sender);
+    void nextLevelCallback(Ref* sender);
+    void pauseCallback(Ref* sender);
+    void resumeCallback(Ref* sender);
+    
+    
 public:
     
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
@@ -29,6 +52,9 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(UILayer);
     
+    void gameEnd(bool isWin);
+    void gameStart();
+    void update(float dt);
     
     bool onTouchBegan(Touch* touch, Event* event);
     void onTouchMoved(Touch* touch, Event* event);

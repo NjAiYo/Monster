@@ -46,7 +46,6 @@ bool LoadScene::init()
     textureNames.push_back("gamebg.jpg");
     textureNames.push_back("rope.png");
     textureNames.push_back("stone.png");
-    textureNames.push_back("playButton.png");
     imagesLoaded = 0;
     total = textureNames.size();
     

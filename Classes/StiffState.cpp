@@ -54,6 +54,10 @@ bool StiffState::onMessage(Character* agent, const Telegram& msg)
 //            });
             Weapon *weapon = (Weapon*)GameEntityManager::getInstance()->getEntityFromID(msg.sender);
             agent->takeDamage(weapon->getDamage());
+            if (agent->getLife() <= 0) {
+                agent->die();
+                return false;
+            }
             switch (weapon->getType()) {
                 case WeaponTypeKnife:{
                     Knife *knife = (Knife*)weapon;

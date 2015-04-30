@@ -16,53 +16,77 @@
 
 void AttackState::attack(Character* agent)
 {
+    attacking = true;
+    attackNum++;
     spTrackEntry* entry = agent->getSkeletonNode()->setAnimation(0, "attack", false);
     agent->getSkeletonNode()->setTrackCompleteListener(entry, [=] (int trackIndex,int loopCount) {
         //log("attack complete!");
         BGTWall *wall = agent->getWorld()->getWall();
+        float damage = agent->getDamage();
         MessageDispatcher::getInstance()->dispatchMessage(0,                  //time delay 1.5
                                                           agent->getID(),           //sender ID
                                                           wall->getID(),           //receiver ID
                                                           Msg_WallDamaged,        //msg
-                                                          NULL);
+                                                          &damage);
+        attacking = false;
+
     });
 }
 
 void AttackState::bigAttack(Character* agent)
 {
+    attacking = true;
+    attackNum++;
     spTrackEntry* entry = agent->getSkeletonNode()->setAnimation(0, "bigattack", false);
     agent->getSkeletonNode()->setTrackCompleteListener(entry, [=] (int trackIndex,int loopCount) {
         //log("attack complete!");
+        
         BGTWall *wall = agent->getWorld()->getWall();
+        float damage = agent->getDamage()*1.3;
         MessageDispatcher::getInstance()->dispatchMessage(0,                  //time delay 1.5
                                                           agent->getID(),           //sender ID
                                                           wall->getID(),           //receiver ID
                                                           Msg_WallDamaged,        //msg
-                                                          NULL);
+                                                          &damage);
+        attacking = false;
     });
 }
 
 void AttackState::enter(Character* agent)
 {
-    agent->getSkeletonNode()->setTimeScale(1.0);
-    agent->getSkeletonNode()->setToSetupPose();
-    agent->getSkeletonNode()->setBonesToSetupPose();
-    agent->getSkeletonNode()->setSlotsToSetupPose();
-    spTrackEntry* entry = agent->getSkeletonNode()->setAnimation(0, "attack", true);
-    agent->getSkeletonNode()->setTrackCompleteListener(entry, [=] (int trackIndex,int loopCount) {
-        //log("attack complete!");
-        BGTWall *wall = agent->getWorld()->getWall();
-        MessageDispatcher::getInstance()->dispatchMessage(0,                  //time delay 1.5
-                                    agent->getID(),           //sender ID
-                                    wall->getID(),           //receiver ID
-                                    Msg_WallDamaged,        //msg
-                                    NULL);
-    });
+//    agent->getSkeletonNode()->setTimeScale(1.0);
+//    agent->getSkeletonNode()->setToSetupPose();
+//    agent->getSkeletonNode()->setBonesToSetupPose();
+//    agent->getSkeletonNode()->setSlotsToSetupPose();
+    attacking = true;
+    attackNum = 1;
+    if (attackNum % 3 == 0) {
+        bigAttack(agent);
+    }else{
+        attack(agent);
+    }
+    
+//    spTrackEntry* entry = agent->getSkeletonNode()->setAnimation(0, "attack", true);
+//    agent->getSkeletonNode()->setTrackCompleteListener(entry, [=] (int trackIndex,int loopCount) {
+//        //log("attack complete!");
+//        BGTWall *wall = agent->getWorld()->getWall();
+//        MessageDispatcher::getInstance()->dispatchMessage(0,                  //time delay 1.5
+//                                    agent->getID(),           //sender ID
+//                                    wall->getID(),           //receiver ID
+//                                    Msg_WallDamaged,        //msg
+//                                    NULL);
+//    });
 }
 
 void AttackState::execute(Character* agent,float dt)
 {
-    
+    if(!attacking){
+        if (attackNum % 3 == 0) {
+            bigAttack(agent);
+        }else{
+            attack(agent);
+        }
+    }
 }
 
 void AttackState::exit(Character* agent)
@@ -77,6 +101,10 @@ bool AttackState::onMessage(Character* agent, const Telegram& msg)
             log("Character::Msg_AttackedByWeapon");
             Weapon *weapon = (Weapon*)GameEntityManager::getInstance()->getEntityFromID(msg.sender);
             agent->takeDamage(weapon->getDamage());
+            if (agent->getLife() <= 0) {
+                agent->die();
+                return false;
+            }
             switch (weapon->getType()) {
                 case WeaponTypeKnife:{
                     Knife *knife = (Knife*)weapon;

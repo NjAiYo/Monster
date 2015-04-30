@@ -27,6 +27,7 @@
 #include "MessageDispatcher.h"
 #include "LieDownState.h"
 #include "FlowState.h"
+#include "MonsterData.h"
 
 class BGTWall;
 
@@ -39,6 +40,10 @@ USING_NS_CC;
 class Character : public GameEntity
 {
 protected:
+    //for debug
+//    DrawNode *hitRectNode;
+    Sprite *lifeBar;
+    ProgressTimer *progressBar;
     //states
     StandState *standState;
     AttackState *attackState;
@@ -58,24 +63,27 @@ protected:
     CharacterDirection direction;
     //CharacterState state;
     spine::SkeletonAnimation *skeletonNode;
-    CharacterType type;
-    float life,totalLife;
-    //用于碰撞检测
-    float soldierWidth;
-    float soldierHeight;
+    MonsterData *monsterData;
+//    CharacterType type;
+    float life;
+//    //用于碰撞检测
+//    float soldierWidth;
+//    float soldierHeight;
     
     //离地面的高度，普通的士兵是0，也就是站在地上，飞行的兵和被打飞起来的兵大于0
     float heightFromFloor;
+//    
+//    
+//    float moveSpeed;
+//    //两次攻击之间间隔
+//    float attackSpeed;
+//    //伤害
+//    float damage;
+//    //攻击范围，远程兵就是射程
+//    float attackRange;
     
-    
-    float moveSpeed;
-    //两次攻击之间间隔
-    float attackSpeed;
-    //伤害
-    float damage;
     bool  isRemoteSoldier;
-    //攻击范围，远程兵就是射程
-    float attackRange;
+
     
     BGTWall *wall;
     
@@ -83,6 +91,7 @@ protected:
     StateMachine<Character>*  m_pStateMachine;
     
     float floor;
+    float currentTimeScale;
     
     void animationStateEvent (int trackIndex, spEventType type, spEvent* event, int loopCount);
 public:
@@ -98,6 +107,9 @@ public:
     StateMachine<Character>* getFSM();
     
     SkeletonAnimation* getSkeletonNode();
+    
+    void pauseAnimation();
+    void resumeAnimation();
     
     float getFloor();
     void setFloor(float f);
@@ -128,6 +140,7 @@ public:
     virtual void flowup();
     virtual void rollback();
     virtual void liedown();
+    virtual void die();
     
     virtual void takeDamage(float damage);
     
@@ -140,35 +153,37 @@ public:
     virtual void setType(CharacterType d);
     CharacterType getType();
     
-    virtual void setTotalLife(float d);
+//    virtual void setTotalLife(float d);
     float getTotalLife();
     
     virtual void setLife(float d);
     float getLife();
     
-    virtual void setSoldierWidth(float d);
+//    virtual void setSoldierWidth(float d);
     float getSoldierWidth();
-    
-    virtual void setSoldierHeight(float d);
+//
+//    virtual void setSoldierHeight(float d);
     float getSoldierHeight();
     
     virtual void setHeightFromFloor(float d);
     float getHeightFromFloor();
     
-    virtual void setMoveSpeed(float d);
+//    virtual void setMoveSpeed(float d);
     float getMoveSpeed();
-    
-    virtual void setAttackSpeed(float d);
+//
+//    virtual void setAttackSpeed(float d);
     float getAttackSpeed();
     
-    virtual void setDamage(float d);
+//    virtual void setDamage(float d);
     float getDamage();
     
     virtual void setIsRemoteSoldier(bool d);
     bool getIsRemoteSoldier();
     
-    virtual void setAttackRange(float d);
+//    virtual void setAttackRange(float d);
     float getAttackRange();
+    
+    MonsterData* getMonsterData();
 };
 
 #endif /* defined(__BGT__Character__) */

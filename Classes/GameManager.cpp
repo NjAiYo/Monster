@@ -7,6 +7,7 @@
 //
 
 #include "GameManager.h"
+#include "json.h"
 
 // singleton stuff
 static GameManager *s_SharedManager = NULL;
@@ -19,12 +20,18 @@ GameManager::GameManager()
 
 GameManager::~GameManager()
 {
-    
+    player->release();
+}
+
+Player* GameManager::getPlayer()
+{
+    return player;
 }
 
 bool GameManager::init()
 {
-    
+    player = new Player();
+    player->init();
     return true;
 }
 

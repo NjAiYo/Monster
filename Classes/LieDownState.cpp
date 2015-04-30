@@ -15,7 +15,7 @@
 void LieDownState::enter(Character* agent)
 {
     //agent->playAnimation(0,"die", true);
-    spTrackEntry* entry = agent->getSkeletonNode()->setAnimation(0, "laydown", true);
+    //spTrackEntry* entry = agent->getSkeletonNode()->setAnimation(0, "laydown", true);
 //    agent->getSkeletonNode()->setTrackCompleteListener(entry, [=] (int trackIndex,int loopCount) {
 //
 //    });
@@ -41,9 +41,13 @@ bool LieDownState::onMessage(Character* agent, const Telegram& msg)
             log("Character::Msg_AttackedByWeapon");
             Weapon *weapon = (Weapon*)GameEntityManager::getInstance()->getEntityFromID(msg.sender);
             agent->takeDamage(weapon->getDamage());
+            if (agent->getLife() <= 0) {
+                agent->die();
+                return false;
+            }
             spTrackEntry* entry = agent->getSkeletonNode()->setAnimation(0, "Injured", false);
             agent->getSkeletonNode()->setTrackCompleteListener(entry, [=] (int trackIndex,int loopCount) {
-                agent->getSkeletonNode()->setAnimation(0, "laydown", true);
+                //agent->getSkeletonNode()->setAnimation(0, "laydown", true);
             });
             switch (weapon->getType()) {
                 case WeaponTypeKnife:{

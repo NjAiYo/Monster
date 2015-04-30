@@ -16,7 +16,7 @@ void FlowState::enter(Character* agent)
 {
     //agent->playAnimation(0,"Injured", false);
     spTrackEntry* entry = agent->getSkeletonNode()->setAnimation(0, "die", false);
-    agent->getSkeletonNode()->addAnimation(0, "laydown", true);
+    //agent->getSkeletonNode()->addAnimation(0, "laydown", true);
     agent->getSkeletonNode()->setTrackCompleteListener(entry, [=] (int trackIndex,int loopCount) {
         //log("attack complete!");
         //agent->move();
@@ -37,7 +37,11 @@ void FlowState::execute(Character* agent,float dt)
     }
     agent->setPositionY(newY);
     if (hitFloor) {
-        agent->standup();
+        if (agent->getLife() <= 0) {
+            agent->die();
+        }else{
+            agent->standup();
+        }
     }
 }
 
@@ -53,9 +57,10 @@ bool FlowState::onMessage(Character* agent, const Telegram& msg)
             log("Character::Msg_AttackedByWeapon");
             Weapon *weapon = (Weapon*)GameEntityManager::getInstance()->getEntityFromID(msg.sender);
             agent->takeDamage(weapon->getDamage());
+
             spTrackEntry* entry = agent->getSkeletonNode()->setAnimation(0, "Injured", false);
             agent->getSkeletonNode()->setTrackCompleteListener(entry, [=] (int trackIndex,int loopCount) {
-                agent->getSkeletonNode()->addAnimation(0, "laydown", true);
+                //agent->getSkeletonNode()->addAnimation(0, "laydown", true);
             });
             switch (weapon->getType()) {
                 case WeaponTypeKnife:{

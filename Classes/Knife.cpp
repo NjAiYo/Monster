@@ -26,7 +26,7 @@ bool Knife::initWithWorld(BGTWorld *w)
         xuliLayer = Layer::create();
         addChild(xuliLayer);
         xuliLayer->setVisible(false);
-        xuliBar = ProgressTimer::create(Sprite::create("powerprobar.png"));
+        xuliBar = ProgressTimer::create(Sprite::createWithSpriteFrameName("powerprobar.png"));
 
         xuliBar->setType(ProgressTimer::Type::RADIAL);
 //        xuliBar->setMidpoint(cc.p(0,1));
@@ -85,7 +85,7 @@ bool Knife::isXuliStateDamage()
 bool Knife::onTouchBegan(Touch* touch, Event* event)
 {
     //CCLOG("Paddle::onTouchBegan id = %d, x = %f, y = %f", touch->getID(), touch->getLocation().x, touch->getLocation().y);
-    log("Knife::onTouchBegan");
+    //log("Knife::onTouchBegan");
     Vec2 pos = touch->getLocation();
     //this->getChildByTag(111)->setPosition(Vec2(t->getLocation().x,t->getLocation().y));
     
@@ -101,7 +101,7 @@ bool Knife::onTouchBegan(Touch* touch, Event* event)
 
 void Knife::onTouchMoved(Touch* touch, Event* event)
 {
-    log("Knife::onTouchMoved");
+    //log("Knife::onTouchMoved");
     // If it weren't for the TouchDispatcher, you would need to keep a reference
     // to the touch from touchBegan and check that the current touch is the same
     // as that one.
@@ -168,7 +168,7 @@ void Knife::onTouchMoved(Touch* touch, Event* event)
         }
         //hit test monster
         for (Character *agent : world->getMonsters()) {
-            if (!agent->isVisible()) {
+            if (!agent->isVisible() || agent->isDieState()) {
                 continue;
             }
             Rect rect = agent->getRect();

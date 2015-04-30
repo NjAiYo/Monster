@@ -14,6 +14,35 @@
 //每一波有哪些兵种可出，兵种数量分配，原则上出兵从低级到高级兵出，出兵可以按阵型出
 
 
-#include <stdio.h>
+#include "cocos2d.h"
+#include "MonsterData.h"
+#include "LevelData.h"
+USING_NS_CC;
+
+//管理关卡
+
+class WaveManager : public cocos2d::Ref
+{
+private:
+    WaveManager(const WaveManager &);
+    WaveManager& operator=(const WaveManager &);
+    Vector<MonsterData*> monsterDatas;
+    Vector<LevelData*> levelDatas;
+    LevelData *currentLevelData;
+public:
+    
+    // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
+    WaveManager();
+    virtual ~WaveManager();
+    virtual bool init();
+    static WaveManager* getInstance();
+    
+    
+    LevelData* getLevelData(int index);
+    Wave* getWave(LevelData *levelData,int index);
+    
+    Vector<MonsterData*> getMonsterDatas();
+    MonsterData* getMonsterDataByType(int type);
+};
 
 #endif /* defined(__BGT__WaveManager__) */

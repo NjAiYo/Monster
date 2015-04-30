@@ -12,7 +12,7 @@
 void FallDownState::enter(Character* agent)
 {
     //agent->playAnimation(0,"die", false);
-    spTrackEntry* entry = agent->getSkeletonNode()->setAnimation(0, "die", false);
+    spTrackEntry* entry = agent->getSkeletonNode()->setAnimation(0, "falldown", false);
     agent->getSkeletonNode()->setTrackCompleteListener(entry, [=] (int trackIndex,int loopCount) {
         //log("attack complete!");
         agent->liedown();

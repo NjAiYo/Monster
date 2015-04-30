@@ -21,7 +21,7 @@ void RollBackState::enter(Character* agent)
         
         if (agent->isRollBackState()) {
             //播放后仰的动画
-            agent->getSkeletonNode()->setAnimation(0, "layback", true);
+            //agent->getSkeletonNode()->setAnimation(0, "layback", true);
         }
     });
 }

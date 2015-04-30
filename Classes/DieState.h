@@ -17,7 +17,7 @@ class DieState : public State<Character>
 {
 private:
     
-    
+    float deadTime;
     
     //copy ctor and assignment should be private
     DieState(const DieState&);

@@ -12,23 +12,23 @@
 
 
 
-Scene* GameScene::createScene()
+Scene* GameScene::createSceneWithLevel(unsigned int level)
 {
     // 'scene' is an autorelease object
     auto scene = Scene::create();
     
     // 'layer' is an autorelease object
-    auto layer = GameScene::create();
-    
+    auto layer = new GameScene();
+    layer->initWithLevel(level);
     // add layer as a child to scene
     scene->addChild(layer);
-    
+    layer->release();
     // return the scene
     return scene;
 }
 
 // on "init" you need to initialize your instance
-bool GameScene::init()
+bool GameScene::initWithLevel(unsigned int level)
 {
     //////////////////////////////
     // 1. super init first
@@ -36,7 +36,11 @@ bool GameScene::init()
     {
         return false;
     }
-    currentLevel = 0;
+
+    SpriteFrameCache *ccsfc = SpriteFrameCache::getInstance();
+    ccsfc->addSpriteFramesWithFile("GameScene.plist");
+    
+    currentLevel = level;
     state = GameStateReady;
     
     Size size = Director::getInstance()->getWinSize();
@@ -54,8 +58,12 @@ bool GameScene::init()
     addChild(uiLayer);
     uiLayer->release();
     
+
+    
+    setLevel(currentLevel);
     return true;
 }
+
 
 void GameScene::onEnterTransitionDidFinish()
 {
@@ -105,14 +113,16 @@ void GameScene::createWorld()
 
 void GameScene::startGame()
 {
-    setLevel(currentLevel);
     scheduleUpdate();
+    world->startGame();
+    uiLayer->gameStart();
+    
     state = GameStateGaming;
 }
 
 void GameScene::restartGame()
 {
-    
+    //删掉之前所有的entitymanager里的entity
 }
 
 void GameScene::nextLevel()
@@ -129,6 +139,7 @@ void GameScene::setLevel(unsigned value)
 void GameScene::pauseGame()
 {
     state = GameStatePaused;
+    world->pauseGame();
     pausedNodes = Director::getInstance()->getActionManager()->pauseAllRunningActions();
     Director::getInstance()->getScheduler();
 }
@@ -137,11 +148,13 @@ void GameScene::resumeGame()
 {
     Director::getInstance()->getActionManager()->resumeTargets(pausedNodes);
     state = GameStateGaming;
+    world->resumeGame();
 }
 
-void GameScene::gameEnd()
+void GameScene::gameEnd(bool isWin)
 {
     state = GameStateEnded;
+    uiLayer->gameEnd(isWin);
 }
 
 bool GameScene::onTouchBegan(Touch* touch, Event* event)
@@ -177,5 +190,6 @@ void GameScene::update(float dt)
 {
     if (state == GameStateGaming) {
         world->update(dt);
+        uiLayer->update(dt);
     }
 }

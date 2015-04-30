@@ -12,8 +12,11 @@
 #include "cocos2d.h"
 //#include "sqlite3.h"
 #include "UserData.h"
+#include "Player.h"
 
 USING_NS_CC;
+
+//管理用户数据
 
 class GameManager : public cocos2d::Ref
 {
@@ -25,6 +28,7 @@ private:
 //    std::string sqlstr;
     int result;
     
+    Player *player;
     UserData *userData;
     
     GameManager(const GameManager &);
@@ -38,6 +42,7 @@ public:
     static GameManager* getInstance();
     void readGameData();
     void saveGameData();
+    Player* getPlayer();
     
 };
 

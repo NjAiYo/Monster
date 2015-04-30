@@ -47,6 +47,11 @@ GameEntity* GameEntityManager::getEntityFromID(int idV)
     return NULL;
 }
 
+void GameEntityManager::removeAllEntity()
+{
+    m_EntityMap.clear();
+}
+
 //--------------------------- RemoveEntity ------------------------------------
 //-----------------------------------------------------------------------------
 void GameEntityManager::removeEntity(GameEntity* pEntity)

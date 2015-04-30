@@ -25,11 +25,11 @@ bool BGTWall::initWithWorld(BGTWorld *w){
     }
     AppDelegate *app = (AppDelegate*)Application::getInstance();
     float scaleFactory = app->scaleFactory;
-    width = 552 * scaleFactory;
+    width = fieldHeight * scaleFactory;
     
     Sprite *stone1 = Sprite::create("stone.png");
     this->addChild(stone1);
-    stone1->setPosition(50,120);
+    stone1->setPosition(75,250);
     
     
     Sprite *rope = Sprite::create("rope.png");
@@ -38,8 +38,25 @@ bool BGTWall::initWithWorld(BGTWorld *w){
     
     Sprite *stone2 = Sprite::create("stone.png");
     this->addChild(stone2);
-    stone2->setPosition(-50,-120);
+    stone2->setPosition(-50,-250);
+    totalLife = 100;
+    life = totalLife;
     return true;
+}
+
+float BGTWall::getLife()
+{
+    return life;
+}
+
+float BGTWall::getTotalLife()
+{
+    return totalLife;
+}
+
+void BGTWall::reset()
+{
+    life = totalLife;
 }
 
 float BGTWall::getWidth()
@@ -64,9 +81,10 @@ bool BGTWall::handleMessage(const Telegram& msg)
 {
     switch (msg.msg) {
         case Msg_WallDamaged:{
-            log("takedamage");
-            Character *monster = (Character*)GameEntityManager::getInstance()->getEntityFromID(msg.sender);
-            takeDamage(monster->getDamage());
+            //Character *monster = (Character*)GameEntityManager::getInstance()->getEntityFromID(msg.sender);
+            float damage = *(float*)msg.extraInfo;
+            log("takedamage:%f",damage);
+            takeDamage(damage);
         }
             break;
         default:

@@ -19,7 +19,8 @@ private:
     //copy ctor and assignment should be private
     AttackState(const AttackState&);
     AttackState& operator=(const AttackState&);
-    
+    int attackNum;
+    bool attacking;
 public:
     explicit AttackState(){}
     virtual void enter(Character* agent);

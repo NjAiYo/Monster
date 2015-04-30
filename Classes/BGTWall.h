@@ -35,7 +35,12 @@ public:
     void update(float dt);
     void takeDamage(float value);
     
+    float getLife();
+    float getTotalLife();
+    
     float getWidth();
+    
+    void reset();
     
     Vec2 topPosition;
     Vec2 bottomPosition;

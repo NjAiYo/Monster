@@ -20,6 +20,11 @@ bool Pistol::initWithWorld(BGTWorld *w)
         
         shotInteval = 250;
         canShot = true;
+        xuliTotalTime = 500;//2秒
+        xuliTimePast = 0;
+        origDamage = 10;
+        damage = origDamage;
+        isXuliDamage = false;
         return true;
     }
     return false;
@@ -54,7 +59,7 @@ bool Pistol::onTouchBegan(Touch* touch, Event* event)
     
     //hit test monster
     for (Character *agent : world->getMonsters()) {
-        if (!agent->isVisible()) {
+        if (!agent->isVisible() || agent->isDieState()) {
             continue;
         }
         Rect rect = agent->getRect();

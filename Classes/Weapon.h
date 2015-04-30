@@ -19,7 +19,12 @@ class Weapon : public GameEntity
 {
 protected:
     float damage;
+    float origDamage;
+    bool isXuliDamage;
     WeaponType type;
+    bool xuliing;
+    double xuliTotalTime;
+    double xuliTimePast;
 public:
     virtual void setDamage(float v){ damage = v; };
     virtual float getDamage(){ return damage; };

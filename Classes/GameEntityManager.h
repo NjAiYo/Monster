@@ -47,6 +47,7 @@ public:
     
     //this method removes the entity from the list
     void removeEntity(GameEntity* pEntity);
+    void removeAllEntity();
 };
 
 #endif /* defined(__BGT__GameEntityManager__) */

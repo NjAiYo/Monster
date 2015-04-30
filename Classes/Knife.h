@@ -24,12 +24,9 @@ private:
     bool touchedForXuLi;
     double currentTouchTime;
     Layer *xuliLayer;
-    bool xuliing;
-    double xuliTotalTime;
-    double xuliTimePast;
+
     ProgressTimer *xuliBar;
-    float origDamage;
-    bool isXuliDamage;
+
 public:
     bool initWithWorld(BGTWorld *w);
     
